@@ -7,3 +7,6 @@ class Grid:
 
     def get_cell(self, row, col):
         return self.cells[row][col]
+
+    def change_cell_value(self, row, col, new_value):
+        self.cells[row][col].change_value(new_value)

@@ -1,3 +1,5 @@
+import pytest
+
 from src.grid import Grid
 
 
@@ -15,3 +17,16 @@ def test_default_grid_values():
 def test_get_cell_in_grid():
     my_grid = Grid()
     assert 0 == my_grid.get_cell(0, 0).value
+
+
+def test_modify_cell_in_grid():
+    my_grid = Grid()
+    my_grid.change_cell_value(0, 0, 5)
+    assert 5 == my_grid.get_cell(0, 0).value
+
+
+def test_modify_cell_in_grid_exeption():
+    my_grid = Grid()
+    with pytest.raises(ValueError) as excinfo:
+        my_grid.change_cell_value(0, 0, 12)
+    assert str(excinfo.value) == "Cell value must be between 0 and 9"
