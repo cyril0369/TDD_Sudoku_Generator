@@ -1,6 +1,18 @@
 import pytest
-
 from src.grid import Grid
+
+
+grid_exemple = [
+    [9, 0, 0, 1, 0, 0, 0, 0, 5],
+    [0, 0, 5, 0, 9, 0, 2, 0, 1],
+    [8, 0, 0, 0, 4, 0, 0, 0, 0],
+    [0, 0, 0, 0, 8, 0, 0, 0, 0],
+    [0, 0, 0, 7, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 6, 0, 0, 9],
+    [2, 0, 0, 3, 0, 0, 0, 0, 6],
+    [0, 0, 0, 2, 0, 0, 9, 0, 0],
+    [0, 0, 1, 9, 0, 4, 5, 7, 0]
+]
 
 
 def test_grid_size():
@@ -27,6 +39,12 @@ def test_modify_cell_in_grid():
 
 def test_modify_cell_in_grid_exeption():
     my_grid = Grid()
-    with pytest.raises(ValueError) as excinfo:
+    with pytest.raises(ValueError) as e:
         my_grid.change_cell_value(0, 0, 12)
-    assert str(excinfo.value) == "Cell value must be between 0 and 9"
+    assert str(e.value) == "Cell value must be between 0 and 9"
+
+
+def test_modify_grid():
+    grid = Grid()
+    grid.change_grid(grid_exemple)
+    assert 9 == grid.get_cell(0, 0).value

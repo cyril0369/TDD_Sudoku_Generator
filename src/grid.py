@@ -10,3 +10,8 @@ class Grid:
 
     def change_cell_value(self, row, col, new_value):
         self.cells[row][col].change_value(new_value)
+
+    def change_grid(self, new_grid):
+        for i in range(9):
+            for j in range(9):
+                self.cells[i][j].change_value(new_grid[i][j])
