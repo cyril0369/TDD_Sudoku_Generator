@@ -1,5 +1,5 @@
 import random
-from src.grid import Grid
+from grid import Grid
 
 
 class Sudoku():
@@ -86,3 +86,32 @@ class Sudoku():
 
     def remove_cell(self, i, j):
         self.grid.cells[i][j].value = 0
+
+    def count_zeros(self):
+        return sum(1 for i in range(9) for j in range(9)
+                   if self.grid.cells[i][j].value == 0)
+
+    def return_fill_cell(self):
+        if self.count_zeros == 81:
+            return "No fill cell"
+        i = random.randint(0, 8)
+        j = random.randint(0, 8)
+        while self.grid.cells[i][j].value == 0:
+            i = random.randint(0, 8)
+            j = random.randint(0, 8)
+        return (i, j)
+
+    def remove_n_cells(self, n, limit=64):
+        print(f"effacage de {n} case")
+        for _ in range(n):
+            if self.count_zeros() >= limit:
+                return
+            (i, j) = self.return_fill_cell()
+            v = self.grid.cells[i][j].value
+            self.remove_cell(i, j)
+            while self.count_solutions() > 1:
+                self.grid.change_cell_value(i, j, v)
+                (i, j) = self.return_fill_cell()
+                v = self.grid.cells[i][j].value
+                self.remove_cell(i, j)
+        return

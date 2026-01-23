@@ -107,3 +107,19 @@ def test_several_solution():
 def test_remove_one_cell():
     sudoku_from_scratch.remove_cell(4, 5)
     assert 0 == sudoku_from_scratch.grid.cells[4][5].value
+
+
+def test_count_zeros():
+    assert 1 == sudoku_from_scratch.count_zeros()
+
+
+def test_return_fill_cell():
+    sudoku_from_scratch.affichage()
+    (i, j) = sudoku_from_scratch.return_fill_cell()
+    assert 0 < sudoku_from_scratch.grid.cells[i][j].value
+
+
+def test_remove_n_cells():
+    sudoku_from_scratch.remove_n_cells(10)
+    zeros = sudoku_from_scratch.count_zeros()
+    assert 11 == zeros
