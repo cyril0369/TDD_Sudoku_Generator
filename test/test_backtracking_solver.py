@@ -52,6 +52,14 @@ def test_is_valid_out_of_grill():
 
 
 def test_is_valid():
-    solveur.affichage()
-    solveur.is_valid(0)
-    solveur.affichage()
+    assert solveur.is_valid(0)
+
+
+def test_generate_different_grids():
+    grid1 = Grid()
+    grid2 = Grid()
+    solveur1 = BacktrackingSolver(grid1)
+    solveur2 = BacktrackingSolver(grid2)
+    solveur1.is_valid(0)
+    solveur2.is_valid(0)
+    assert solveur1.grid != solveur2.grid

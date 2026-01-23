@@ -14,7 +14,7 @@ grid = [
     [0, 0, 1, 9, 0, 4, 5, 7, 0]
 ]
 grid_exemple = Grid()
-grid_exemple.change_grid(grid)
+# grid_exemple.change_grid(grid)
 solveur = BacktrackingSolver(grid_exemple)
 
 solveur.affichage()

@@ -1,3 +1,6 @@
+import random
+
+
 class BacktrackingSolver():
     def __init__(self, grid):
         self.grid = grid
@@ -33,7 +36,7 @@ class BacktrackingSolver():
                     return False
         return True
 
-    def is_valid(self, position):
+    def is_valid(self, position=None, id=0):
         if (position == 9*9):
             return True
 
@@ -43,7 +46,9 @@ class BacktrackingSolver():
         if (self.grid.cells[i][j].value != 0):
             return self.is_valid(position+1)
 
-        for k in range(1, 10):
+        nums = list(range(1, 10))
+        random.shuffle(nums)
+        for k in nums:
             row_ok = self.not_on_row(k, i)
             col_ok = self.not_on_col(k, j)
             block_ok = self.not_on_block(k, i//3, j // 3)

@@ -32,3 +32,9 @@ def test_change_value_exeption():
     with pytest.raises(ValueError) as excinfo:
         cell.change_value(10)
     assert str(excinfo.value) == "Cell value must be between 0 and 9"
+
+
+def test_cells_equals():
+    cell1 = Cell()
+    cell2 = Cell()
+    assert cell1 == cell2

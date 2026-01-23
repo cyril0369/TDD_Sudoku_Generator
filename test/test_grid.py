@@ -48,3 +48,9 @@ def test_modify_grid():
     grid = Grid()
     grid.change_grid(grid_exemple)
     assert 9 == grid.get_cell(0, 0).value
+
+
+def test_grids_equals():
+    grid1 = Grid()
+    grid2 = Grid()
+    assert grid1 == grid2
