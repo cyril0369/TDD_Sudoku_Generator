@@ -1,4 +1,4 @@
-from backtracking_solver import BacktrackingSolver
+from src.Sudoku import BacktrackingSolver
 from grid import Grid
 
 

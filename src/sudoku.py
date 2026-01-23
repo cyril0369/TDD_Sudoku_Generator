@@ -1,9 +1,10 @@
 import random
+from src.grid import Grid
 
 
-class BacktrackingSolver():
-    def __init__(self, grid):
-        self.grid = grid
+class Sudoku():
+    def __init__(self, grid=None):
+        self.grid = grid if grid is not None else Grid()
 
     def affichage(self):
         for i in range(9):
@@ -82,3 +83,6 @@ class BacktrackingSolver():
                     return count
         self.grid.change_cell_value(i, j, 0)
         return count
+
+    def remove_cell(self, i, j):
+        self.grid.cells[i][j].value = 0
