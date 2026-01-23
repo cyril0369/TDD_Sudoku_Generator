@@ -58,3 +58,27 @@ class BacktrackingSolver():
                     return True
         self.grid.change_cell_value(i, j, 0)
         return False
+
+    def count_solutions(self, position=0, limit=2):
+        if position == 9*9:
+            return 1
+
+        i = position // 9
+        j = position % 9
+
+        if self.grid.cells[i][j].value != 0:
+            return self.count_solutions(position+1, limit)
+
+        count = 0
+        for k in range(1, 10):
+            row_ok = self.not_on_row(k, i)
+            col_ok = self.not_on_col(k, j)
+            block_ok = self.not_on_block(k, i//3, j//3)
+            if row_ok and col_ok and block_ok:
+                self.grid.change_cell_value(i, j, k)
+                count += self.count_solutions(position+1, limit)
+                if count >= limit:
+                    self.grid.change_cell_value(i, j, 0)
+                    return count
+        self.grid.change_cell_value(i, j, 0)
+        return count

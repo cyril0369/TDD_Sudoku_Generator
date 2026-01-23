@@ -16,6 +16,9 @@ grid_exemple = Grid()
 grid_exemple.change_grid(grid)
 solveur = BacktrackingSolver(grid_exemple)
 
+solveur_from_scratch = BacktrackingSolver(Grid())
+solveur_from_scratch.is_valid(0)
+
 
 def test_create_solveur():
     grid = Grid()
@@ -63,3 +66,38 @@ def test_generate_different_grids():
     solveur1.is_valid(0)
     solveur2.is_valid(0)
     assert solveur1.grid != solveur2.grid
+
+
+def test_unicity_numbers_by_line():
+    grid = solveur_from_scratch.grid
+    for i in range(9):
+        numbers = [grid.cells[i][j].value for j in range(9)]
+        assert len(numbers) == len(set(numbers))
+        assert set(numbers) == set(range(1, 10))
+
+
+def test_unicity_numbers_by_column():
+    grid = solveur_from_scratch.grid
+    for j in range(9):
+        numbers = [grid.cells[i][j].value for i in range(9)]
+        assert len(numbers) == len(set(numbers))
+        assert set(numbers) == set(range(1, 10))
+
+
+def test_unicity_numbers_by_block():
+    grid = solveur_from_scratch.grid
+    for block_i in range(3):
+        for block_j in range(3):
+            numbers = [grid.cells[i][j].value for i in range(
+                block_i*3, block_i*3+3) for j in range(block_j*3, block_j*3+3)]
+            assert len(numbers) == len(set(numbers))
+            assert set(numbers) == set(range(1, 10))
+
+
+def test_unicity_solution():
+    assert 1 == solveur.count_solutions()
+
+
+def test_several_solution():
+    solveur = BacktrackingSolver(Grid())
+    assert 1 < solveur.count_solutions()
