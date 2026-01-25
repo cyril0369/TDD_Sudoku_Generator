@@ -24,7 +24,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 2rem;
+    gap: 20px ;
 }
 
 #new-game {
@@ -59,6 +59,36 @@ body {
     font-size: 1.2rem;
     text-transform: uppercase;
     cursor: pointer;
+}
+
+#level {
+    height: 50px;
+    width: 294px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+#clock {
+    height: 50px;
+    width: 294px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+#mistakes {
+    height: 50px;
+    width: 294px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
 }
 
 #grid, #selection{
@@ -107,4 +137,8 @@ body {
 
 .selected-cell{
     background-color: #9cd8ff;
+}
+
+.wrong-digit {
+    color: rgb(255, 0, 0);
 }
