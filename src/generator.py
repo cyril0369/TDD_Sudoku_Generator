@@ -1,5 +1,5 @@
 import random
-from sudoku import Sudoku
+from src.sudoku import Sudoku
 
 
 def generate_suduku(difficulty):
@@ -16,7 +16,3 @@ def generate_suduku(difficulty):
     sudoku.is_valid(0)
     sudoku.remove_n_cells(target)
     return sudoku
-
-
-sudoku = generate_suduku("expert")
-sudoku.affichage()

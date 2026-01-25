@@ -1,5 +1,5 @@
 import random
-from grid import Grid
+from src.grid import Grid
 
 
 class Sudoku():

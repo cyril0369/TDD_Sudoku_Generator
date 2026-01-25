@@ -1,4 +1,4 @@
-from src.main import generate_suduku
+from src.generator import generate_suduku
 
 
 def test_generate_biginer_suduku():
