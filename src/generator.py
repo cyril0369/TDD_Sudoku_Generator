@@ -1,5 +1,6 @@
 import random
 from src.sudoku import Sudoku
+from src.grid import Grid
 
 
 def generate_suduku(difficulty):
@@ -15,4 +16,15 @@ def generate_suduku(difficulty):
     sudoku = Sudoku()
     sudoku.is_valid(0)
     sudoku.remove_n_cells(target)
+    return sudoku
+
+
+def generate_sudoku_from_json(json):
+    grid_json = [
+        [cell["value"] for cell in json["sudoku"]["grid"]["cells"][i]]
+        for i in range(9)
+    ]
+    grid = Grid()
+    grid.change_grid(grid_json)
+    sudoku = Sudoku(grid)
     return sudoku
