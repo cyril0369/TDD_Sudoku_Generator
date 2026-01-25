@@ -1,9 +1,10 @@
 let mistakestxt = document.getElementById("mistakes");
 let selectedCell;
 let mistakes = 0;
+let difficulty = ["easy","medium","hard"];
 
-const fetchBoard = async() => {
-    const res = await fetch('http://127.0.0.1:8000/sudoku_grid/hard')
+const fetchBoard = async(level) => {
+    const res = await fetch(`http://127.0.0.1:8000/sudoku_grid/${level}`)
     if (!res.ok) {
         console.error('HTTP error', res.status);
         return;
@@ -23,12 +24,16 @@ const fetchBoard = async() => {
     return [board, boardSolution]
 }
 
-const startGame = async() => {
-    const boardGenAndSolution = await fetchBoard();
+const startGame = async(level) => {
+    const boardGenAndSolution = await fetchBoard(level);
     const board = boardGenAndSolution[0];
     const solution = boardGenAndSolution[1];
 
     console.log(board, solution)
+
+    document.getElementById('grid').innerHTML = '';
+    document.getElementById('selection').innerHTML = '';
+    document.getElementById('difficulty').innerHTML = '';
 
     for (let i = 0; i <= 9; i+=1) {
         let digit = document.createElement('div');
@@ -58,6 +63,20 @@ const startGame = async() => {
         }
     }
 
+    let newGame = document.getElementById("new-game")
+    newGame.innerHTML = 'NEW GAME'
+    newGame.addEventListener('click',displayDifficulty);
+    document.getElementById('difficulty').style.visibility = 'hidden';
+
+    for (let i = 0; i < 3; i+=1) {
+        let difficultyButton = document.createElement('div');
+        difficultyButton.id = difficulty[i];
+        difficultyButton.innerHTML = difficulty[i];
+        difficultyButton.classList.add('difficulty-button');
+        difficultyButton.addEventListener('click', () => startGame(difficultyButton.id));
+        document.getElementById('difficulty').appendChild(difficultyButton)
+    }
+
     function setCell() {
         if (selectedCell != undefined) selectedCell.classList.remove("selected-cell")
         selectedCell = this;
@@ -83,6 +102,14 @@ const startGame = async() => {
             }
         }
     }
+
+    async function displayDifficulty() {
+        document.getElementById('difficulty').style.visibility = 'visible';
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        document.getElementById('difficulty').style.visibility = 'hidden';
+    }
+
+
 }
 
-startGame();
+startGame('easy');

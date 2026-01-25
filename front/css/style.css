@@ -3,6 +3,62 @@ body {
     padding: 0;
     box-sizing: border-box;
     text-align: center;
+    display: flex;
+}
+
+#main {
+    margin: 0;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#menue {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2rem;
+}
+
+#new-game {
+    height: 64.22px;
+    width: 294px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #005fc4;
+    color: white;
+    border: 3px solid black;
+    border-radius: 5px;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+#difficulty {
+    display: flex;
+    gap: 6px;
+    visibility: hidden;
+}
+
+.difficulty-button {
+    height: 50px;
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #9cd8ff;
+    border: 3px solid black;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    cursor: pointer;
 }
 
 #grid, #selection{
@@ -35,10 +91,6 @@ body {
 
 .digit {
     cursor: pointer;
-}
-
-.fixed-cell {
-
 }
 
 .unfixed-cell {
