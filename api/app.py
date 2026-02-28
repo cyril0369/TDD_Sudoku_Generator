@@ -6,7 +6,10 @@ from src.generator import generate_suduku, generate_sudoku_from_json
 app = FastAPI()
 
 origins = [
-    "http://127.0.0.1:8080",  # l'adresse de ton front
+    "http://localhost:3000",  # Front Docker
+    "http://localhost:8080",  # Front dev mode
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:8080",
 ]
 
 app.add_middleware(
