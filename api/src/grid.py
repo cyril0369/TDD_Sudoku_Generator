@@ -1,4 +1,4 @@
-from src.cell import Cell
+from api.src.cell import Cell
 
 
 class Grid:

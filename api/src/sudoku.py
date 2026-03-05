@@ -1,8 +1,8 @@
 import random
-from src.grid import Grid
+from api.src.grid import Grid
 
 
-class Sudoku():
+class Sudoku:
     def __init__(self, grid=None):
         self.grid = grid if grid is not None else Grid()
 

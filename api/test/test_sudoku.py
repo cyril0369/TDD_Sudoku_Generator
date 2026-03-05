@@ -1,5 +1,5 @@
-from src.grid import Grid
-from src.sudoku import Sudoku
+from api.src.grid import Grid
+from api.src.sudoku import Sudoku
 
 grid = [
     [9, 0, 0, 1, 0, 0, 0, 0, 5],

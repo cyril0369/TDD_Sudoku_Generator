@@ -1,6 +1,6 @@
 import random
-from src.sudoku import Sudoku
-from src.grid import Grid
+from api.src.sudoku import Sudoku
+from api.src.grid import Grid
 
 
 def generate_suduku(difficulty):
