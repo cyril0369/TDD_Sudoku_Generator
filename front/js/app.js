@@ -8,7 +8,7 @@ let interval = null;
 let elapsed = 0;
 
 const fetchBoard = async(level_dificulty) => {
-    const res = await fetch(`http://127.0.0.1:8000/sudoku_grid/${level_dificulty}`)
+    const res = await fetch(`/api/sudoku_grid/${level_dificulty}`)
     if (!res.ok) {
         console.error('HTTP error', res.status);
         return;
@@ -16,7 +16,7 @@ const fetchBoard = async(level_dificulty) => {
     const data = await res.json();
     const board = data["sudoku"]["grid"]["cells"];
 
-    const fetchSolution = await fetch('http://127.0.0.1:8000/sudoku_solver', {
+    const fetchSolution = await fetch('/api/sudoku_solver', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {'Content-Type': 'application/json'}
