@@ -2,17 +2,12 @@
 
 Générateur et solveur de Sudoku (implémentation backtracking) avec tests TDD.
 
-Lancer l'API (FastAPI exemple) :
-```bash
-pip install fastapi
-```
-```bash
-fastapi run api/app.py
-```
+## Installation
 
-Lancer le front :
-```bash
-cd front
-npm ci
-npm start
+### API & Logic
+```shell
+cd api
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
