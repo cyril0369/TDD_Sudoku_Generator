@@ -1,14 +1,26 @@
 services:
   api:
-    build: api
+    build:
+      context: ./api
+    image: ${GHCR_NAMESPACE:-ghcr.io/vitaly}/aws-docker-api:${IMAGE_TAG:-latest}
     container_name: "sudoku-api"
+    restart: unless-stopped
 
   front:
-    build: front
+    build:
+      context: ./front
+    image: ${GHCR_NAMESPACE:-ghcr.io/vitaly}/aws-docker-front:${IMAGE_TAG:-latest}
     container_name: "sudoku-front"
+    restart: unless-stopped
 
   nginx:
-    build: nginx
+    build:
+      context: ./nginx
+    image: ${GHCR_NAMESPACE:-ghcr.io/vitaly}/aws-docker-nginx:${IMAGE_TAG:-latest}
     container_name: "sudoku-nginx"
+    depends_on:
+      - api
+      - front
+    restart: unless-stopped
     ports:
       - "7854:80"
