@@ -1,0 +1,19 @@
+name: CI
+on:
+  push:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build and test API
+        run: |
+          docker build -t sudoku-api ./api
+          docker run --rm sudoku-api pytest

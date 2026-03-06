@@ -1,5 +1,5 @@
 import pytest
-from src.grid import Grid
+from api.src.grid import Grid
 
 
 grid_exemple = [

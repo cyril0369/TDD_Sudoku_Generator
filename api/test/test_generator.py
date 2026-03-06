@@ -1,5 +1,5 @@
-from src.generator import generate_suduku, generate_sudoku_from_json
-from src.sudoku import Sudoku
+from api.src.generator import generate_suduku, generate_sudoku_from_json
+from api.src.sudoku import Sudoku
 
 json = {
     "sudoku": {

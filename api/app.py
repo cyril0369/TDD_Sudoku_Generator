@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from src.generator import generate_suduku, generate_sudoku_from_json
+from api.src.generator import generate_suduku, generate_sudoku_from_json
 
 
 app = FastAPI()
