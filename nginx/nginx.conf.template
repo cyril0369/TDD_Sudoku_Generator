@@ -3,7 +3,7 @@ upstream api_sudoku {
 }
 
 upstream front_sudoku {
-    server sudoku-front:80;
+    server sudoku-front:8080;
 }
 
 server {
